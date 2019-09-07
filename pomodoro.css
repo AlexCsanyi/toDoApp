@@ -30,14 +30,26 @@
 
 #timerContainer {
   background: var(--clr-dark);
-  margin: 5%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 3%;
 }
 
 #mode {
   background-color: rgba(0, 0, 0, 0.2);
   padding: var(--spacer);
+  font-size: 36px;
 }
 
 #timer {
-  padding: var(--spacer);
+  font-size: 36px;
+}
+
+.plusMinusButton {
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin: 2%;
 }

@@ -166,9 +166,15 @@ function resumeOn() {
 }
 
 function myAlertFunction() {
-  alert(
-    `${mode.innerHTML}` + " session is on - you need to wait till the end!"
-  );
+  let modal = document.getElementById("myModal");
+  let span = document.getElementsByClassName("close")[0];
+  let textContent = document.getElementById("modal-text");
+  modal.style.display = "block";
+  textContent.innerHTML =
+    `${mode.innerHTML}` + " session is on - you need to wait till the end!";
+  span.onclick = function() {
+    modal.style.display = "none";
+  };
 }
 
 start.addEventListener("click", startTimer);
@@ -209,12 +215,32 @@ function startTimer() {
         work.addEventListener("click", workOn);
         longBreak.addEventListener("click", longBreakOn);
         shortBreak.addEventListener("click", shortBreakOn);
+        addTime.addEventListener("click", addTimeButton);
+        reduceTime.addEventListener("click", reduceTimeButton);
+        start.addEventListener("click", startTimer);
+        pause.removeEventListener("click", pauseOn);
+        resume.removeEventListener("click", resumeOn);
+        clearInterval(timerId);
         work.removeAttribute("style");
         work.removeAttribute("onclick");
         longBreak.removeAttribute("style");
         longBreak.removeAttribute("onclick");
         shortBreak.removeAttribute("style");
         shortBreak.removeAttribute("onclick");
+
+        workTime = "25";
+        longBreakTime = "15";
+        shortBreakTime = "05";
+
+        if (mode.innerHTML === "Work") {
+          minutes.innerHTML = workTime;
+        } else if (mode.innerHTML === "Break") {
+          minutes.innerHTML = shortBreakTime;
+        } else {
+          minutes.innerHTML = longBreakTime;
+        }
+
+        seconds.innerHTML = "00";
       }
     } else if (seconds.innerHTML !== 0) {
       seconds.innerHTML -= 1;

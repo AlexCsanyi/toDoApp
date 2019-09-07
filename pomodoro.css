@@ -3,6 +3,41 @@
   text-align: center;
 }
 
+.modal {
+  display: none;
+  background-color: var(--clr-warning);
+  color: var(--clr-primary);
+  padding-left: 20px;
+  padding-right: 20px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  margin-top: 10px;
+  border-radius: 2em;
+}
+
+.modal-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.modal-content p {
+  margin-right: 10px;
+}
+
+.close {
+  background-color: var(--clr-primary);
+  color: var(--clr-light);
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
 #upperButtons div,
 #timer div,
 #lowerButtons div {
@@ -34,7 +69,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: 3%;
+  margin-top: 100px;
   margin-bottom: 3%;
 }
 

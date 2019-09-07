@@ -23,6 +23,7 @@
 }
 
 #upperButtons div:hover,
+#upperButtons div:focus,
 #lowerButtons div:hover {
   color: var(--clr-primary);
   background-color: var(--clr-light);

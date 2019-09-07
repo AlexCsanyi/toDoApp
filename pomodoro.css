@@ -1,0 +1,33 @@
+.pomodoro {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#upperButtons div,
+#timer div,
+#lowerButtons div {
+  display: inline-block;
+}
+
+.button {
+  cursor: pointer;
+}
+
+#upperButtons div,
+#lowerButtons div {
+  padding: 1%;
+  border: 2px solid var(--clr-light);
+  border-radius: 25px;
+  text-align: center;
+  transition: all 0.35s linear;
+}
+
+#upperButtons div:hover,
+#lowerButtons div:hover {
+  color: var(--clr-primary);
+  background-color: var(--clr-light);
+}
+
+#timer {
+  margin: 5% auto;
+}

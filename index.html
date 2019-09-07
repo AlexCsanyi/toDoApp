@@ -8,11 +8,41 @@
       href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="main.css" />
     <link rel="stylesheet" href="toDoList.css" />
+    <link rel="stylesheet" href="pomodoro.css" />
+    <script defer src="pomodoro.js"></script>
     <script defer src="toDoList.js"></script>
+    <audio
+      id="alarm"
+      preload="auto"
+      src="http://www.orangefreesounds.com/wp-content/uploads/2015/10/Calming-sea-sounds.mp3"
+    ></audio>
     <title>Journal</title>
   </head>
   <body>
+    <div class="pomodoro">
+      <div id="upperButtons">
+        <div class="button" id="work">Work</div>
+        <div class="button" id="longBreak">Long Break</div>
+        <div class="button" id="break">Break</div>
+      </div>
+      <div id="mode">Work</div>
+      <div id="timer">
+        <div class="button" id="addTime">+</div>
+        <div id="time">
+          <span id="minutes">25</span> : <span id="seconds">00</span>
+        </div>
+        <div class="button" id="reduceTime">-</div>
+      </div>
+      <div id="lowerButtons">
+        <div class="button" id="start">Start</div>
+        <div class="button" id="pause">Pause</div>
+        <div class="button" id="resume">Resume</div>
+        <div class="button" id="reset">Reset</div>
+      </div>
+    </div>
+
     <h1 class="title">Stuff I need to do</h1>
 
     <div class="all-tasks">

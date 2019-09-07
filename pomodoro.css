@@ -53,3 +53,12 @@
   border-radius: 50%;
   margin: 2%;
 }
+
+.plusMinusButton:hover {
+  background-color: var(--clr-light);
+  color: var(--clr-primary);
+}
+
+#resume {
+  display: none !important;
+}

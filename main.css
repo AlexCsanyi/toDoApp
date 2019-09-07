@@ -33,6 +33,7 @@ body::-webkit-scrollbar {
 @media screen and (max-width: 820px) {
   body {
     grid:
+      ". pomodoro ." auto
       "header header header" auto
       ". lists ." auto
       ". active ." auto /
@@ -51,6 +52,7 @@ body::-webkit-scrollbar {
 @media screen and (max-width: 420px) {
   body {
     grid:
+      ". pomodoro ." auto
       "header header header" auto
       ". lists ." auto
       ". active ." auto /

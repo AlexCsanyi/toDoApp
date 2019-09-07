@@ -28,6 +28,16 @@
   background-color: var(--clr-light);
 }
 
+#timerContainer {
+  background: var(--clr-dark);
+  margin: 5%;
+}
+
+#mode {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: var(--spacer);
+}
+
 #timer {
-  margin: 5% auto;
+  padding: var(--spacer);
 }

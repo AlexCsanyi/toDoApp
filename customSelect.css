@@ -1,0 +1,16 @@
+.custom-select {
+  margin: 20px 0px;
+}
+
+.custom-select select {
+  background: var(--clr-primary);
+  border: 1px solid var(--clr-light);
+  border-radius: 10px;
+  width: 50%;
+  font-size: 16px;
+  color: var(--clr-light);
+}
+
+.custom-select select:focus {
+  outline: none;
+}

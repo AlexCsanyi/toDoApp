@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="main.css" />
     <link rel="stylesheet" href="toDoList.css" />
     <link rel="stylesheet" href="pomodoro.css" />
+    <link rel="stylesheet" href="customSelect.css">
     <script defer src="pomodoro.js"></script>
     <script defer src="toDoList.js"></script>
     <audio
@@ -37,11 +38,11 @@
       <div id="timerContainer">
         <div id="mode">Work</div>
         <div id="timer">
-          <div class="button plusMinusButton" id="addTime">+</div>
+          <div class="button plusMinusButton noSelect" id="addTime">+</div>
           <div id="time">
             <span id="minutes">25</span> : <span id="seconds">00</span>
           </div>
-          <div class="button plusMinusButton" id="reduceTime">-</div>
+          <div class="button plusMinusButton noSelect" id="reduceTime">-</div>
         </div>
       </div>
       <div id="lowerButtons">
@@ -50,6 +51,43 @@
         <div class="button" id="resume">Resume</div>
         <div class="button" id="reset">Reset</div>
       </div>
+    </div>
+
+    <div class="myTable">
+      <table>
+        <tr>
+          <th colspan="2">Key data points to track productivity</th>
+        </tr>
+        <tr>
+          <td>Total No. of sessions</td>
+          <td class="cellTextRight" id="totalOverall"></td>
+        </tr>
+        <tr>
+          <td>No. of sessions in current month</td>
+          <td class="cellTextRight" id="totalCurrentMonth"></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="graphs">
+      <div class="custom-select">
+        <p>Select Month</p>
+        <select id="select-month">
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </select>
+      </div>
+      <canvas id="activityByMonthChart" width="400" height="200"></canvas>
     </div>
 
     <h1 class="title">Stuff I need to do</h1>
@@ -110,5 +148,8 @@
         </label>
       </div>
     </template>
+
+    <script src="./taffydb-master/taffy.js"></script>
+    <script src="./node_modules/chart.js/dist/Chart.js"></script>
   </body>
 </html>

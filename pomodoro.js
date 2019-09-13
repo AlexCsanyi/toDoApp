@@ -1,3 +1,9 @@
+let workSessions = TAFFY([]);
+
+window.onload = function() {
+  workSessions();
+};
+
 const upperButtons = document.getElementById("upperButtons"),
   work = document.getElementById("work"),
   longBreak = document.getElementById("longBreak"),
@@ -15,6 +21,20 @@ const upperButtons = document.getElementById("upperButtons"),
   resume = document.getElementById("resume"),
   reset = document.getElementById("reset"),
   alarm = document.getElementById("alarm");
+
+let month = new Array();
+month[0] = "January";
+month[1] = "February";
+month[2] = "March";
+month[3] = "April";
+month[4] = "May";
+month[5] = "June";
+month[6] = "July";
+month[7] = "August";
+month[8] = "September";
+month[9] = "October";
+month[10] = "November";
+month[11] = "December";
 
 let clock,
   timerId,
@@ -241,10 +261,100 @@ function startTimer() {
         }
 
         seconds.innerHTML = "00";
+
+        if (mode.innerHTML == "Work") {
+          let finishedWorkSession = {
+            month: month[new Date().getMonth()],
+            date: new Date().getDate(),
+            hour: new Date().getHours()
+          };
+          workSessions.insert(finishedWorkSession);
+        }
       }
     } else if (seconds.innerHTML !== 0) {
       seconds.innerHTML -= 1;
       seconds.innerHTML = leadingZeros(seconds.innerHTML);
     }
-  }, 1000);
+  }, 20);
 }
+
+workSessions.store("workSessions");
+
+/* -------------  DATA  -------------  */
+
+document.getElementById("totalOverall").innerHTML = `${workSessions().count()}`;
+document.getElementById("totalCurrentMonth").innerHTML = `${workSessions()
+  .filter({
+    month: "September"
+  })
+  .count()}`;
+let dates = workSessions({ month: "September" }).distinct("date");
+let workSessionsPerDay = [];
+
+dates.forEach(element => {
+  workSessionsPerDay.push(
+    workSessions()
+      .filter({ date: element })
+      .count()
+  );
+});
+
+/* document.getElementById("test3").innerHTML = `${workSessions()
+  .filter({
+    hour: 6
+  })
+  .count()}`; */
+
+let ctx = document.getElementById("activityByMonthChart");
+var myChart = new Chart(ctx, {
+  type: "bar",
+  data: {
+    labels: dates,
+    datasets: [
+      {
+        label: "No. of work sessions in September",
+        data: workSessionsPerDay,
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.2)",
+          "rgba(54, 162, 235, 0.2)",
+          "rgba(255, 206, 86, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(153, 102, 255, 0.2)",
+          "rgba(255, 159, 64, 0.2)"
+        ],
+        borderColor: [
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)",
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)",
+          "rgba(255, 159, 64, 1)"
+        ],
+        borderWidth: 1
+      }
+    ]
+  },
+  options: {
+    scales: {
+      yAxes: [
+        {
+          scaleLabel: {
+            display: true,
+            labelString: "No. of sessions"
+          },
+          ticks: {
+            beginAtZero: true
+          }
+        }
+      ],
+      xAxes: [
+        {
+          scaleLabel: {
+            display: true,
+            labelString: "Date"
+          }
+        }
+      ]
+    }
+  }
+});

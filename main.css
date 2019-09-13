@@ -3,6 +3,7 @@
   --clr-light: #dec79b;
   --clr-dark: #333;
   --clr-warning: rgb(99, 36, 36);
+  --base: 0.6rem;
 }
 
 *,
@@ -21,6 +22,8 @@ body {
   display: grid;
   grid:
     ". pomodoro pomodoro ." auto
+    ". myTable myTable ." auto
+    ". graphs graphs ." auto
     "header header header header" auto
     "...... lists active ......" auto /
     1fr minmax(100px, 300px) minmax(250px, 500px) 1fr;
@@ -34,6 +37,8 @@ body::-webkit-scrollbar {
   body {
     grid:
       ". pomodoro ." auto
+      ". myTable ." auto
+      "graphs graphs graphs" auto
       "header header header" auto
       ". lists ." auto
       ". active ." auto /
@@ -53,6 +58,8 @@ body::-webkit-scrollbar {
   body {
     grid:
       ". pomodoro ." auto
+      ". myTable ." auto
+      "graphs graphs graphs" auto
       "header header header" auto
       ". lists ." auto
       ". active ." auto /
@@ -81,6 +88,35 @@ h6 {
 
 .pomodoro {
   grid-area: pomodoro;
+}
+
+.myTable {
+  grid-area: myTable;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid var(--clr-warning);
+  padding: 8px;
+}
+
+.cellTextRight {
+  text-align: right;
+}
+
+.graphs {
+  grid-area: graphs;
+  text-align: center;
 }
 
 .title {

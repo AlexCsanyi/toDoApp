@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="main.css" />
     <link rel="stylesheet" href="toDoList.css" />
     <link rel="stylesheet" href="pomodoro.css" />
-    <link rel="stylesheet" href="customSelect.css">
+    <link rel="stylesheet" href="customSelect.css" />
     <script defer src="pomodoro.js"></script>
     <script defer src="toDoList.js"></script>
     <audio
@@ -72,22 +72,14 @@
     <div class="graphs">
       <div class="custom-select">
         <p>Select Month</p>
-        <select id="select-month">
-          <option value="January">January</option>
-          <option value="February">February</option>
-          <option value="March">March</option>
-          <option value="April">April</option>
-          <option value="May">May</option>
-          <option value="June">June</option>
-          <option value="July">July</option>
-          <option value="August">August</option>
-          <option value="September">September</option>
-          <option value="October">October</option>
-          <option value="November">November</option>
-          <option value="December">December</option>
+        <select id="select-month" onchange="showChartTwoOnly(this)">
+          <option value="allCharts">All Charts</option>
+          <option value="0">Activity by Month Chart</option>
+          <option value="1">Activity by Hour Chart</option>
         </select>
       </div>
-      <canvas id="activityByMonthChart" width="400" height="200"></canvas>
+      <canvas id="activityByMonthChart" width="20%" height="10%"></canvas>
+      <canvas id="activityByHour" width="20%" height="10%"></canvas>
     </div>
 
     <h1 class="title">Stuff I need to do</h1>

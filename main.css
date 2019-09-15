@@ -38,7 +38,7 @@ body::-webkit-scrollbar {
     grid:
       ". pomodoro ." auto
       ". myTable ." auto
-      "graphs graphs graphs" auto
+      ". graphs ." auto
       "header header header" auto
       ". lists ." auto
       ". active ." auto /
@@ -59,7 +59,7 @@ body::-webkit-scrollbar {
     grid:
       ". pomodoro ." auto
       ". myTable ." auto
-      "graphs graphs graphs" auto
+      ". graphs ." auto
       "header header header" auto
       ". lists ." auto
       ". active ." auto /
@@ -128,4 +128,8 @@ th {
 
 .all-tasks {
   grid-area: lists;
+}
+
+.nonVisible {
+  display: none;
 }

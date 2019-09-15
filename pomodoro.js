@@ -282,6 +282,22 @@ workSessions.store("workSessions");
 
 /* -------------  DATA  -------------  */
 
+/* Graph Selector */
+
+function showChartTwoOnly(element) {
+  element.value == 1
+    ? (document.getElementById("activityByMonthChart").style.display = "none")
+    : (document.getElementById("activityByMonthChart").style.display = "block");
+  element.value == 0
+    ? (document.getElementById("activityByHour").style.display = "none")
+    : (document.getElementById("activityByHour").style.display = "block");
+}
+
+function display2() {
+  document.getElementById("activityByMonthChart").className("nonVisible");
+}
+
+/* Get Monthly and Daily Data */
 document.getElementById("totalOverall").innerHTML = `${workSessions().count()}`;
 document.getElementById("totalCurrentMonth").innerHTML = `${workSessions()
   .filter({
@@ -298,12 +314,6 @@ dates.forEach(element => {
       .count()
   );
 });
-
-/* document.getElementById("test3").innerHTML = `${workSessions()
-  .filter({
-    hour: 6
-  })
-  .count()}`; */
 
 let ctx = document.getElementById("activityByMonthChart");
 var myChart = new Chart(ctx, {
@@ -352,6 +362,89 @@ var myChart = new Chart(ctx, {
           scaleLabel: {
             display: true,
             labelString: "Date"
+          }
+        }
+      ]
+    }
+  }
+});
+
+/* Get Hourly Data */
+
+let testing = workSessions().select("hour");
+
+let workSessionsPerHour = [];
+
+for (i = 0; i <= 24; i++) {
+  if (workSessions().filter({ hour: i })) {
+    workSessionsPerHour.push(
+      workSessions()
+        .filter({ hour: i })
+        .count()
+    );
+  } else {
+    workSessionsPerHour.push(0);
+  }
+}
+
+let ctx2 = document.getElementById("activityByHour");
+var myChart = new Chart(ctx2, {
+  type: "line",
+  data: {
+    labels: [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ],
+    datasets: [
+      {
+        label: "No. of work sessions by hour",
+        data: workSessionsPerHour,
+        backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+        borderColor: ["rgba(255, 99, 132, 1)"],
+        borderWidth: 1
+      }
+    ]
+  },
+  options: {
+    scales: {
+      yAxes: [
+        {
+          scaleLabel: {
+            display: true,
+            labelString: "No. of sessions"
+          },
+          ticks: {
+            beginAtZero: true
+          }
+        }
+      ],
+      xAxes: [
+        {
+          scaleLabel: {
+            display: true,
+            labelString: "Hour of Day"
           }
         }
       ]

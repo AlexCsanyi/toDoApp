@@ -78,6 +78,7 @@ form {
 
   grid-area: active;
   background: var(--clr-dark);
+  margin-bottom: 20px;
 }
 
 .todo-header {
@@ -178,12 +179,10 @@ form {
 }
 
 .delete-stuff {
+  margin-top: 20px;
   display: flex;
-  justify-content: space-evenly;
-  position: absolute;
+  justify-content: flex-start;
   width: 100%;
-  left: 0;
-  bottom: -45px;
 }
 
 .btn {
@@ -199,6 +198,7 @@ form {
   border-radius: 2em;
   padding: 7px;
   transition: background-color color 500ms ease-in-out;
+  margin-right: 5px;
 }
 
 .btn.delete:hover {

@@ -284,7 +284,7 @@ workSessions.store("workSessions");
 
 /* Graph Selector */
 
-function showChartTwoOnly(element) {
+function toggleCharts(element) {
   element.value == 1
     ? (document.getElementById("activityByMonthChart").style.display = "none")
     : (document.getElementById("activityByMonthChart").style.display = "block");

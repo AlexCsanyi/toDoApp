@@ -275,7 +275,7 @@ function startTimer() {
       seconds.innerHTML -= 1;
       seconds.innerHTML = leadingZeros(seconds.innerHTML);
     }
-  }, 20);
+  }, 1000);
 }
 
 workSessions.store("workSessions");

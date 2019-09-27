@@ -369,6 +369,21 @@ var myChart = new Chart(ctx, {
   }
 });
 
+var dataset = myChart.data.datasets[0];
+for (var i = 0; i < dataset.data.length; i++) {
+  if (dataset.data[i] <= 3) {
+    dataset.backgroundColor[i] = "rgba(255, 99, 132, 0.2)";
+    dataset.borderColor[i] = "rgba(255, 99, 132, 1)";
+  } else if (dataset.data[i] > 3 && dataset.data[i] <= 5) {
+    dataset.backgroundColor[i] = "rgba(255, 206, 86, 0.2)";
+    dataset.borderColor[i] = "rgba(255, 206, 86, 1)";
+  } else {
+    dataset.backgroundColor[i] = "rgba(75, 192, 192, 0.2)";
+    dataset.borderColor[i] = "rgba(75, 192, 192, 1)";
+  }
+}
+myChart.update();
+
 /* Get Hourly Data */
 
 let testing = workSessions().select("hour");
